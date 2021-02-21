@@ -1,52 +1,38 @@
-import React from 'react'
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import Contagem from "./Contagem";
-import Adicionar from "./Adicionar"
-import Remover from "./Remover"
+import React from "react";
+import { useSelector } from "react-redux";
+import { IoMdRemove, IoIosAdd } from "react-icons/io";
+import { TiDelete } from "react-icons/ti";
 
-interface Itens {
-  contador:number;
+function Carrinho() {
+  const carrinho = useSelector((state: any) => state.carrinho);
 
-}
-const initialState: Itens ={
-  contador:0,
-}
-
-function reducer(state = initialState, action:any){
-  switch (action.type) {
-    case "ADICIONAR":
-      return{
-        contador:state.contador + 1
-      }
-      case "REMOVER":
-        return{
-          contador:state.contador >0 ? state.contador - 1 : state.contador,
-        }
-      
-  
-    default:
-      return state;
-  }
-}
-const contador = createStore(reducer)
-
-function Carrinho(){
-
- 
-
-  return(
+  return (
     <div className="container-carrinho">
-      
-      <Provider store={contador}>
-      <Adicionar/>
-      <Contagem/>
-      <Remover/>
-      </Provider>
-      
+      {carrinho.itens !== undefined &&
+        carrinho.itens.map((item: any) => (
+          <div key={item.produto.id} className="beer">
+            <div className="item-remover">
+              <span>
+                <TiDelete />
+              </span>
+            </div>
+            <h2>{item.produto.title}</h2>
+            <img src={item.produto.image} alt="Buzz" />
+            <h3>{item.produto.description}</h3>
+            <h3>{item.produto.price}</h3>
+            <div className="container-button">
+              <button>
+                <IoMdRemove />
+              </button>
+              <span>0</span>
+              <button>
+                <IoIosAdd />
+              </button>
+            </div>
+          </div>
+        ))}
     </div>
-  
-  )
+  );
 }
 
-export default Carrinho
+export default Carrinho;

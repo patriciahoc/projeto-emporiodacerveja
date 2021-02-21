@@ -4,10 +4,12 @@ import imagem1 from "../../img/imagem1.png";
 import imagem2 from "../../img/imagem2.png";
 import { FiUser } from "react-icons/fi";
 import { FaShoppingCart } from "react-icons/fa";
+import { useSelector } from "react-redux";
+import Login from "../pages/Login";
 
 function Header() {
+  const carrinho = useSelector((state: any) => state.carrinho);
 
-  
   return (
     <div className="wrap">
       <div className="header">
@@ -17,23 +19,21 @@ function Header() {
       </div>
       <div className="container-header">
         <div className="image">
-          <a href="/">
-            <img src={imagem1} alt="logo" />
+          <img src={imagem1} alt="logo" />
 
-            <img src={imagem2} alt="Emporio da cerveja" />
-          </a>
+          <img src={imagem2} alt="Emporio da cerveja" />
         </div>
         <div className="navbar">
-          <NavLink href="/cadastro">
+          <NavLink href="/" readOnly>
             <FiUser /> Login
           </NavLink>
-          <NavLink href="/carrinho">
+          <NavLink href="/carrinho" readOnly>
             <FaShoppingCart />
-            Carrinho
+            <span>{carrinho.price}</span>
+            <span>{carrinho.quantidade}</span>
           </NavLink>
         </div>
       </div>
-      <div className="container-body"></div>
     </div>
   );
 }

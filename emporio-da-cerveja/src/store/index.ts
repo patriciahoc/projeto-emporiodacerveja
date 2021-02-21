@@ -5,6 +5,7 @@ import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
 import { usuarioReducer } from "./usuario/reducer";
+import { carrinhoReducer } from "./carrinho/reducer";
 
 const persistConfig = {
   key: "root",
@@ -15,6 +16,7 @@ const persistedReducer = persistReducer(
   persistConfig,
   combineReducers({
     usuario: usuarioReducer,
+    carrinho: carrinhoReducer,
   })
 );
 

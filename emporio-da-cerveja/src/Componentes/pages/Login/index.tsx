@@ -65,7 +65,7 @@ function Login() {
         <button type="submit" onClick={newUser}>
           Entrar
         </button>
-        {usuario.accessToken && <Redirect to="/" />}
+        {usuario.accessToken && <Redirect to="/bebidas" />}
       </div>
     </div>
   );

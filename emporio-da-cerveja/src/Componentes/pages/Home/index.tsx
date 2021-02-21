@@ -1,10 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
 import { Redirect } from "react-router-dom";
+import { CARRINHO_ACTIONS } from "../../../store/carrinho/action";
 import { BeerTypes } from "./types/BeerTypes";
 
 function Home() {
+  const dispatch = useDispatch();
   const [beer, setBeer] = useState<BeerTypes[]>([]);
   const usuario = useSelector((state: any) => state.usuario);
 
@@ -20,8 +23,8 @@ function Home() {
     }
   }, [usuario]);
 
-  const comprarBeer = () => {
-    <Redirect to="/carrinho" />;
+  const comprarBeer = (item: any) => {
+    dispatch({ type: CARRINHO_ACTIONS.ADD_CARRINHO, payload: item });
   };
 
   return !usuario.accessToken ? (
@@ -35,7 +38,7 @@ function Home() {
             <img src={item.image} alt="Buzz" />
             <h3>{item.description}</h3>
             <h3>{item.price}</h3>
-            <button onClick={comprarBeer}>Comprar</button>
+            <button onClick={() => comprarBeer(item)}>Comprar</button>
           </div>
         ))}
     </div>

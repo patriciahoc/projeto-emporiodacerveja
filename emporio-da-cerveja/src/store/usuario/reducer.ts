@@ -11,6 +11,6 @@ export const usuarioReducer = (state = initialState, action: any) => {
       const { name, accessToken } = action.payload;
       return { name, accessToken };
     default:
-      return initialState;
+      return state;
   }
 };
