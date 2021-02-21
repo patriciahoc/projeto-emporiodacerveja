@@ -6,6 +6,8 @@ import { FiUser } from "react-icons/fi";
 import { FaShoppingCart } from "react-icons/fa";
 
 function Header() {
+
+  
   return (
     <div className="wrap">
       <div className="header">
@@ -22,10 +24,16 @@ function Header() {
           </a>
         </div>
         <div className="navbar">
-          <FiUser /> <NavLink href="/cadastro"> Login</NavLink>
-          <FaShoppingCart /> <NavLink href="/carrinho">Carrinho</NavLink>
+          <NavLink href="/cadastro">
+            <FiUser /> Login
+          </NavLink>
+          <NavLink href="/carrinho">
+            <FaShoppingCart />
+            Carrinho
+          </NavLink>
         </div>
       </div>
+      <div className="container-body"></div>
     </div>
   );
 }

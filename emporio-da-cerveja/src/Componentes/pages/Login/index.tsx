@@ -1,39 +1,71 @@
-import React from "react";
+import axios from "axios";
+import React, { useRef } from "react";
+import { Helmet } from "react-helmet";
+import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
+import { USUARIO_ACTIONS } from "../../../store/usuario/actions";
 
 function Login() {
+  const dispatch = useDispatch();
+  const usuario = useSelector((state: any) => state.usuario);
+  let inputNome = useRef<HTMLInputElement>(null);
+  let inputEmail = useRef<HTMLInputElement>(null);
+  let inputSenha = useRef<HTMLInputElement>(null);
+  let inputIdade = useRef<HTMLInputElement>(null);
+
+  const newUser = () => {
+    const usuario = {
+      name: inputNome.current?.value,
+      email: inputEmail.current?.value,
+      password: inputSenha.current?.value,
+      age: inputIdade.current?.value,
+    };
+
+    if (usuario.age && +usuario.age >= 18) {
+      axios.post("http://localhost:4000/users", usuario).then((resposta) => {
+        dispatch({
+          type: USUARIO_ACTIONS.POST_USUARIO,
+          payload: {
+            name: usuario.name,
+            accessToken: resposta.data.accessToken,
+          },
+        });
+      });
+    } else {
+      alert("Desculpe, essa página é para maiores de 18 anos");
+    }
+  };
+
   return (
     <div className="container-login">
-      <div className="inputNome">
-        <h4>Nome</h4>
-        <input
-          type="text"
-          placeholder="Digite seu nome..."
-          name="nome"
-          id="nome"
-        />
+      <Helmet>
+        <title>Login</title>
+      </Helmet>
+      <div className="container-input">
+        <h4>Usuário</h4>
+        <input type="text" placeholder="Digite seu nome..." ref={inputNome} />
       </div>
-      <div className="inputEmail">
+      <div className="container-input">
         <h4>E-mail</h4>
         <input
           type="email"
           placeholder="Digite seu email..."
-          name="email"
-          id="email"
+          ref={inputEmail}
         />
       </div>
-      <div className="inputPassword">
+      <div className="container-input">
         <h4>Senha</h4>
-        <input type="password" name="senha" id="senha" />
+        <input type="password" ref={inputSenha} />
       </div>
-      <div className="checkbox">
-        <p>Você é maior de 18 anos?</p>
-        <input type="checkbox" name="" id="" />
-        <p>Sim</p>
-        <input type="checkbox" name="" id="" />
-        <p>Não</p>
+      <div className="container-input">
+        <h4>Qual a sua idade?</h4>
+        <input type="number" ref={inputIdade} min="0" />
       </div>
       <div className="botao">
-        <button type="submit">Entrar</button>
+        <button type="submit" onClick={newUser}>
+          Entrar
+        </button>
+        {usuario.accessToken && <Redirect to="/" />}
       </div>
     </div>
   );

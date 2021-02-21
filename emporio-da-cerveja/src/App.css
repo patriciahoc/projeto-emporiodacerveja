@@ -3,9 +3,6 @@ body {
   padding: 0;
   font-family: Open Sans Condensed, sans-serif;
 }
-#root {
-  max-width: 1364px;
-}
 
 .wrap {
   margin-bottom: 8px;
@@ -80,8 +77,109 @@ body {
   display: flow-root;
   justify-content: center;
   align-items: center;
-  max-width: 300px;
+  max-width: 320px;
   margin: 0 auto;
-  background-color: #f0f0f0;
-  padding: 10px 80px;
+  background-color: #fff;
+  padding: 32px;
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.container-login input {
+  width: 100%;
+  border: none;
+  padding: 16px 0 0px 0;
+  font-size: 14px;
+  box-sizing: border-box;
+  outline: 0;
+  margin-bottom: 16px;
+  border-bottom: 2px solid #fff;
+}
+.container-login input:focus {
+  border-color: #ffa935;
+}
+
+.container-login h4 {
+  margin: 0;
+}
+
+.container-input {
+  margin-bottom: 8px;
+}
+.botao button {
+  background-color: #ffa935;
+  font-size: 1rem;
+  border: none;
+  color: #2b2e33;
+  font-family: Open Sans Condensed, sans-serif;
+  font-weight: 700 !important;
+  height: 50px;
+  text-transform: none;
+  padding: 10px;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 50px;
+  outline: 0;
+}
+.botao button:focus {
+  border: 1px solid #2b2e33;
+}
+.container-home {
+  max-width: 100%;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 300px 300px 300px;
+}
+
+.container-beer {
+  width: 300px;
+  text-align: center;
+  border: 1px solid #fff;
+  padding: 20px;
+  margin: 0 10px;
+}
+
+.beer {
+  background-color: #fff;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  text-align: center;
+  padding: 36px;
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.1);
+}
+
+.beer h2 {
+  font-size: 14px;
+  height: 32px;
+}
+
+.beer h3 {
+  font-size: 14px;
+}
+.beer img {
+  max-height: 200px;
+}
+
+.beer button {
+  background-color: #ffa935;
+  font-size: 1rem;
+  border: none;
+  color: #2b2e33;
+  font-family: Open Sans Condensed, sans-serif;
+  font-weight: 700 !important;
+  height: 50px;
+  text-transform: none;
+  padding: 10px;
+  width: 50%;
+  cursor: pointer;
+  border-radius: 50px;
+  outline: 0;
+  transition-duration: 0.4s;
+}
+.beer button:focus {
+  border: 1px solid #2b2e33;
+}
+.beer button:hover {
+  background-color: #e7e7e7;
 }
