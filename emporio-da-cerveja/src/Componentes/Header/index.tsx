@@ -5,7 +5,6 @@ import imagem2 from "../../img/imagem2.png";
 import { FiUser } from "react-icons/fi";
 import { FaShoppingCart } from "react-icons/fa";
 import { useSelector } from "react-redux";
-import Login from "../pages/Login";
 
 function Header() {
   const carrinho = useSelector((state: any) => state.carrinho);
@@ -19,9 +18,11 @@ function Header() {
       </div>
       <div className="container-header">
         <div className="image">
-          <img src={imagem1} alt="logo" />
+          <a href="/">
+            <img src={imagem1} alt="logo" />
 
-          <img src={imagem2} alt="Emporio da cerveja" />
+            <img src={imagem2} alt="Emporio da cerveja" />
+          </a>
         </div>
         <div className="navbar">
           <NavLink href="/" readOnly>
