@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "start":"json-server --watch db.json --port 4000 -m ./node_modules/json-server-auth -r routes.json"
+  },
+  "devDependencies": {
+    "json-server": "^0.16.3",
+    "json-server-auth": "^2.0.2"
+  }
+}
