@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { USUARIO_ACTIONS } from "../../../store/usuario/actions";
+import { RiLockPasswordLine } from "react-icons/ri";
 
 function Login() {
   const dispatch = useDispatch();
@@ -56,6 +57,7 @@ function Login() {
       <div className="container-input">
         <h4>Senha</h4>
         <input type="password" ref={inputSenha} />
+        <RiLockPasswordLine />
       </div>
       <div className="container-input">
         <h4>Qual a sua idade?</h4>

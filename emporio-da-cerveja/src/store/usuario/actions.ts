@@ -1,3 +1,4 @@
 export const USUARIO_ACTIONS = {
   POST_USUARIO: "POST_USUARIO",
+  SAIR: "SAIR",
 };

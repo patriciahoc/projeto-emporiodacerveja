@@ -3,11 +3,24 @@ import { NavLink } from "reactstrap";
 import imagem1 from "../../img/imagem1.png";
 import imagem2 from "../../img/imagem2.png";
 import { FiUser } from "react-icons/fi";
+import { FaPowerOff } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { CARRINHO_ACTIONS } from "../../store/carrinho/action";
+import { USUARIO_ACTIONS } from "../../store/usuario/actions";
+import { useHistory } from "react-router-dom";
 
 function Header() {
+  const dispatch = useDispatch();
+  const history = useHistory();
   const carrinho = useSelector((state: any) => state.carrinho);
+  const usuario = useSelector((state: any) => state.usuario);
+
+  const sair = () => {
+    dispatch({ type: CARRINHO_ACTIONS.LIMPAR_CARRINHO });
+    dispatch({ type: USUARIO_ACTIONS.SAIR });
+    history.push("/");
+  };
 
   return (
     <div className="wrap">
@@ -25,14 +38,23 @@ function Header() {
           </a>
         </div>
         <div className="navbar">
-          <NavLink href="/" readOnly>
-            <FiUser /> Login
-          </NavLink>
-          <NavLink href="/carrinho" readOnly>
-            <FaShoppingCart />
-            <span>{carrinho.price}</span>
-            <span>{carrinho.quantidade}</span>
-          </NavLink>
+          {!usuario.accessToken ? (
+            <NavLink href="/">
+              <FiUser /> Login
+            </NavLink>
+          ) : (
+            <div onClick={() => sair()} className="sair">
+              <FaPowerOff /> Sair
+            </div>
+          )}
+
+          <span>
+            <NavLink href="/carrinho">
+              <FaShoppingCart />
+              <span>R$ {carrinho.valorTotal}</span>
+              <span className="carrinho-quantidade">{carrinho.quantidade}</span>
+            </NavLink>
+          </span>
         </div>
       </div>
     </div>

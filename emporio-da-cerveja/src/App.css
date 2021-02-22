@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  padding: 0;
+  padding: 32px 0 0 0;
   font-family: Open Sans Condensed, sans-serif;
 }
 
@@ -42,6 +42,7 @@ body {
   justify-content: space-between;
   align-items: center;
   background-color: #ffffff;
+  border-bottom: 5px solid #ffa935;
 }
 
 .image {
@@ -105,6 +106,7 @@ body {
   margin-bottom: 16px;
   border-bottom: 2px solid #fff;
 }
+
 .container-login input:focus {
   border-color: #ffa935;
 }
@@ -191,6 +193,9 @@ body {
   outline: 0;
   transition-duration: 0.4s;
 }
+.beer button.remover {
+  background-color: transparent;
+}
 .beer button:focus {
   border: 1px solid #2b2e33;
 }
@@ -226,8 +231,7 @@ body {
   padding: 12px;
 }
 .item-remover {
-  display: flex;
-  justify-content: flex-end;
+  margin-top: 16px;
 }
 .item-remover span svg {
   width: 60px;
@@ -238,4 +242,38 @@ body {
 .container-button button svg {
   width: 25px;
   height: 25px;
+}
+
+.navbar .carrinho-quantidade {
+  position: absolute;
+  left: -9px;
+  background: red;
+  color: white;
+  border-radius: 50%;
+  font-size: 10px;
+  font-weight: bold;
+  width: 15px;
+  height: 15px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: -10px;
+}
+
+.navbar span {
+  position: relative;
+}
+
+.navbar .sair {
+  margin: 0 16px;
+  cursor: pointer;
+}
+.container-input svg {
+  left: 550px;
+  position: absolute;
+  top: 383px;
+}
+input[type="password" i] {
+  margin-left: 25px;
 }
