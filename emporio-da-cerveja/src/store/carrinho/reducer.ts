@@ -1,6 +1,6 @@
 import { CARRINHO_ACTIONS } from "./action";
 
-interface Carrinho {
+export interface Carrinho {
   itens: any[];
   quantidade: number;
   valorTotal: number;
@@ -11,6 +11,9 @@ const initialState: Carrinho = {
   valorTotal: 0,
 };
 
+// Função realiza a soma dos produtos no carrinho, usando a função de array reduce, onde x é a soma do item anterior e y o atual
+// Após percorrer o array verificando cada quantidade de item será ignorando o R$ e substituindo , por .
+// Retornando  o valor total com dois digitos
 function montaEstado(itens: any[]) {
   const quantidade = itens
     .map(({ quantidade }) => quantidade)

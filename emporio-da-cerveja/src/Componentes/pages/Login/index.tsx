@@ -33,7 +33,7 @@ function Login() {
         });
       });
     } else {
-      alert("Desculpe, essa página é para maiores de 18 anos");
+      alert("Desculpe, essa página é para maiores de 18 anos!");
     }
   };
 

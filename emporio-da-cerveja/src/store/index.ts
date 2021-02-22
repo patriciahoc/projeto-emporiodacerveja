@@ -12,6 +12,10 @@ const persistConfig = {
   storage,
 };
 
+// O hook PersistStore e PersistReducer: restauram dados no caso dos usuários atualizarem a página ou evitar a perda de dados
+// se algo inesperado acontecer, ira usar o useEffect para reidratar dados quando o componente
+// é montado e hidratar dados quando o estado muda.
+
 const persistedReducer = persistReducer(
   persistConfig,
   combineReducers({

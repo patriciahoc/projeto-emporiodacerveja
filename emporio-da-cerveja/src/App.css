@@ -42,7 +42,7 @@ body {
   justify-content: space-between;
   align-items: center;
   background-color: #ffffff;
-  border-bottom: 5px solid #ffa935;
+  height: 65px;
 }
 
 .image {
@@ -78,6 +78,36 @@ body {
   color: #2b2e33;
 }
 
+.container-categorias {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  border-bottom: 5px solid #ffa935;
+  background-color: #ffffff;
+}
+
+.categorias-item {
+  margin-right: 8px;
+}
+
+.categorias-item a {
+  cursor: pointer;
+  color: #2b2e33;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+}
+.categorias-item a:visited {
+  text-decoration: none;
+}
+.categorias-item a:hover {
+  text-decoration: underline;
+  text-decoration-color: #ffa935;
+  color: #ffa935;
+}
+.categorias-item a:active {
+  text-decoration: underline;
+}
 .container-body .container-login {
   margin-top: 40px !important;
 }
@@ -276,4 +306,11 @@ body {
 }
 input[type="password" i] {
   margin-left: 25px;
+}
+@media only screen and (max-width: 1024px) {
+  .container-input svg {
+    left: 382px;
+    position: absolute;
+    top: 383px;
+  }
 }
