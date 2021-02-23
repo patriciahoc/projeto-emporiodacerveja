@@ -74,16 +74,18 @@ function Header() {
           </span>
         </div>
       </div>
-      <div className="container-categorias">
-        {categorias !== undefined &&
-          categorias.map((item) => (
-            <section className="categorias-item">
-              <NavLink>
-                <a href="#">{item}</a>
-              </NavLink>
-            </section>
-          ))}
-      </div>
+      {usuario.accessToken !== null && (
+        <div className="container-categorias">
+          {categorias !== undefined &&
+            categorias.map((item) => (
+              <section className="categorias-item">
+                <NavLink>
+                  <a href="#">{item}</a>
+                </NavLink>
+              </section>
+            ))}
+        </div>
+      )}
     </div>
   );
 }
