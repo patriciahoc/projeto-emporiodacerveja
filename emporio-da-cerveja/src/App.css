@@ -90,12 +90,13 @@ body {
   margin-right: 8px;
 }
 
-.categorias-item a {
+.categorias-item li {
   cursor: pointer;
   color: #2b2e33;
   font-weight: 700;
   font-size: 16px;
   text-decoration: none;
+  list-style-type: none;
 }
 .categorias-item a:visited {
   text-decoration: none;

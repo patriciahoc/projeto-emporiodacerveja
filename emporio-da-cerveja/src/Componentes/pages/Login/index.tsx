@@ -1,12 +1,11 @@
 import axios from "axios";
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { Helmet } from "react-helmet";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { USUARIO_ACTIONS } from "../../../store/usuario/actions";
 import { RiLockPasswordLine } from "react-icons/ri";
 import toast, { Toaster } from "react-hot-toast";
-import { Form, Toast } from "reactstrap";
 
 const API = "http://localhost:4000";
 
@@ -67,8 +66,16 @@ function Login() {
             accessToken: resposta.data.accessToken,
           },
         });
-      } catch (error) {
-        toast.error(error.mesage);
+      } catch (erro) {
+        if (erro.request.status === 404) {
+          toast.error("Não foi possivel acessar a página");
+        }
+        if (erro.request.status === 400) {
+          toast.error("Página não encontrada");
+        }
+        if (erro.request.status === 403) {
+          toast.error("Você não pode acessar essa página");
+        }
       }
     }
   };

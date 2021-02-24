@@ -82,11 +82,11 @@ function Header() {
         <div className="container-categorias">
           {categorias !== undefined &&
             categorias.map((item, i) => (
-              <section key={i} className="categorias-item">
+              <div key={i} className="categorias-item">
                 <NavLink>
-                  <a href="#">{item}</a>
+                  <li>{item}</li>
                 </NavLink>
-              </section>
+              </div>
             ))}
         </div>
       )}
