@@ -21,15 +21,19 @@ function Header() {
 
   const [categorias, setCategorias] = useState<Categories[]>([]);
 
-  useEffect(() => {
+  const fetchCategories = async () => {
     if (usuario.accessToken !== null) {
       const headers = {
         Authorization: ` Bearer ${usuario.accessToken}`,
       };
-      axios
-        .get("http://localhost:4000/categories", { headers })
-        .then((resposta) => setCategorias(resposta.data));
+      const category = await axios.get("http://localhost:4000/categories", {
+        headers,
+      });
+      setCategorias(category.data);
     }
+  };
+  useEffect(() => {
+    fetchCategories();
   }, [usuario]);
 
   const sair = () => {
@@ -77,8 +81,8 @@ function Header() {
       {usuario.accessToken !== null && (
         <div className="container-categorias">
           {categorias !== undefined &&
-            categorias.map((item) => (
-              <section className="categorias-item">
+            categorias.map((item, i) => (
+              <section key={i} className="categorias-item">
                 <NavLink>
                   <a href="#">{item}</a>
                 </NavLink>

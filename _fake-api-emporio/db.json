@@ -27,6 +27,69 @@
       "name": "Patricia H",
       "age": "28",
       "id": 4
+    },
+    {
+      "email": "patricia10@gmail.com",
+      "password": "$2a$10$HPSb0YTNgsTCcc/6r4g/8eIVCFYQPIV9UeS7E.W9GMb4yONWKkMWm",
+      "name": "Patricia H",
+      "age": "18",
+      "id": 5
+    },
+    {
+      "email": "patricia11@gmail.com",
+      "password": "$2a$10$vrP1GmS/aHK4aDhFNOkIcuRS.7WFh7QgkAeQr1zcTJpGPI6kirTme",
+      "name": "Patricia H",
+      "age": "28",
+      "id": 6
+    },
+    {
+      "email": "patricia12@gmail.com",
+      "password": "$2a$10$9/q4O6r3OC/q0hf7pwtAiu.ysoJr3kn9nO6ywsPNdD3q68c1knRK6",
+      "name": "Patricia H",
+      "age": "28",
+      "id": 7
+    },
+    {
+      "email": "patricia13@gmail.com",
+      "password": "$2a$10$14d4DdUB12yqYsG4R2EqqecTOZFfZZr5c97MeVUD9e5pXBzogoPFK",
+      "name": "Patricia H",
+      "age": "28",
+      "id": 8
+    },
+    {
+      "email": "patricia14@gmail.com",
+      "password": "$2a$10$/FBEMiasVGUiAXVRXg8r2OONXIku4mExBR/ftTHIZnqzq.sHFtBMy",
+      "name": "Patricia H",
+      "age": "10",
+      "id": 9
+    },
+    {
+      "email": "patricia15@gmail.com",
+      "password": "$2a$10$CcTUc3EoAbKnQiYYrlhcHupiVKeBSsSsBDQhCaBENK6PEDkLovFzq",
+      "name": "Patricia H",
+      "age": "10",
+      "id": 10
+    },
+    {
+      "email": "patricia18@gmail.com",
+      "password": "$2a$10$YQqpe3zKWnXrH9RTm3U5U.4fHkKUAPYB16BEBIpInYHLsaaLRVkeq",
+      "name": "Patricia H",
+      "age": "28",
+      "id": 11
+    },
+    {
+      "email": "patricia20@gmail.com",
+      "password": "$2a$10$w4whJvoJjsnh.76HCaHIiePz9MZ/JbiW8Qs2rHbl5kPPU2nuFqHFm",
+      "name": "Patricia H",
+      "age": "28",
+      "id": 12
+    },
+    {
+      "email": "patrici@gmail.com",
+      "password": "$2a$10$j/pDfnldFmLb9wftZU584OVsmn3yI1L4FAbQYQfpbyxorcK7WZ6yK",
+      "name": "ana",
+      "age": "18",
+      "id": 13
     }
   ],
   "register": [],

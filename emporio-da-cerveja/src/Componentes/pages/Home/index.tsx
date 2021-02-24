@@ -11,16 +11,19 @@ function Home() {
   const [beer, setBeer] = useState<BeerTypes[]>([]);
   const usuario = useSelector((state: any) => state.usuario);
 
-  useEffect(() => {
+  const fetchBeers = async () => {
     if (usuario.accessToken !== null) {
       const headers = {
         Authorization: `Bearer ${usuario.accessToken}`,
       };
-
-      axios
-        .get("http://localhost:4000/beers", { headers })
-        .then((resposta) => setBeer(resposta.data));
+      const resposta = await axios.get("http://localhost:4000/beers", {
+        headers,
+      });
+      setBeer(resposta.data);
     }
+  };
+  useEffect(() => {
+    fetchBeers();
   }, [usuario]);
 
   const comprarBeer = (item: any) => {
@@ -28,7 +31,7 @@ function Home() {
   };
 
   return !usuario.accessToken ? (
-    <Redirect to="/cadastro" />
+    <Redirect to="/" />
   ) : (
     <div className="container-home">
       {beer !== undefined &&

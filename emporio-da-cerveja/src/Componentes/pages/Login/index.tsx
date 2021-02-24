@@ -1,10 +1,14 @@
 import axios from "axios";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { Helmet } from "react-helmet";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { USUARIO_ACTIONS } from "../../../store/usuario/actions";
 import { RiLockPasswordLine } from "react-icons/ri";
+import toast, { Toaster } from "react-hot-toast";
+import { Form, Toast } from "reactstrap";
+
+const API = "http://localhost:4000";
 
 function Login() {
   const dispatch = useDispatch();
@@ -14,7 +18,36 @@ function Login() {
   let inputSenha = useRef<HTMLInputElement>(null);
   let inputIdade = useRef<HTMLInputElement>(null);
 
-  const newUser = () => {
+  const validaForm = async (form: any) => {
+    if (!form.name || form.name.length < 3) {
+      toast.error("Campo nome deve ter ao menos 3 letras!");
+      return false;
+    }
+
+    if (!form.email || form.email.length === 0) {
+      toast.error("Campo email vazio");
+      return false;
+    }
+
+    if (!form.age || +form.age < 18) {
+      toast.error("Acesso apenas para maiores de 18 ano!");
+      return false;
+    }
+
+    if (!form.password || +form.password.length < 8) {
+      toast.error("Senha deve conter 8 digitos");
+      return false;
+    }
+    const resposta = await axios.get(`${API}/users?email=${form.email}`);
+    if (resposta.data.length > 0) {
+      toast.error(`O email ${form.email} já existe`);
+      return false;
+    }
+
+    return true;
+  };
+
+  const newUser = async () => {
     const usuario = {
       name: inputNome.current?.value,
       email: inputEmail.current?.value,
@@ -22,8 +55,11 @@ function Login() {
       age: inputIdade.current?.value,
     };
 
-    if (usuario.age && +usuario.age >= 18) {
-      axios.post("http://localhost:4000/users", usuario).then((resposta) => {
+    const formValido = await validaForm(usuario);
+
+    if (formValido) {
+      try {
+        const resposta = await axios.post(`${API}/users`, usuario);
         dispatch({
           type: USUARIO_ACTIONS.POST_USUARIO,
           payload: {
@@ -31,9 +67,9 @@ function Login() {
             accessToken: resposta.data.accessToken,
           },
         });
-      });
-    } else {
-      alert("Desculpe, essa página é para maiores de 18 anos!");
+      } catch (error) {
+        toast.error(error.mesage);
+      }
     }
   };
 
@@ -67,6 +103,7 @@ function Login() {
         <button type="submit" onClick={newUser}>
           Entrar
         </button>
+        <Toaster />
         {usuario.accessToken && <Redirect to="/bebidas" />}
       </div>
     </div>
